@@ -23,19 +23,19 @@ if (!fs.existsSync(optimizedDir)) {
 app.use(express.json());
 
 app.post('/optimize', upload.single('image'), async (req, res) => {
-    const { format = 'webp', quality = 40 } = req.body; // TODO: Opciones personalizables
+    const { quality, format } = req.body;
     const filePath = req.file.path;
     const outputPath = path.join(optimizedDir, `${req.file.originalname}.${format}`);
 
     try {
-        console.log('Ruta de la imagen optimizada:', outputPath); // Depuración
+        //console.log('Ruta de la imagen optimizada:', outputPath); 
 
         // Optimizar la imagen
         await sharp(filePath)
             .toFormat(format, { quality: parseInt(quality) }) // Calidad (0-100)
             .toFile(outputPath);
 
-        console.log('Imagen optimizada guardada en:', outputPath); // Depuración
+        //console.log('Imagen optimizada guardada en:', outputPath); 
 
         // Leer el archivo optimizado y enviarlo como respuesta
         const optimizedImage = fs.readFileSync(outputPath);
