@@ -10,7 +10,7 @@ function Home() {
         <>
             <div className="flex flex-col items-center justify-center gap-8">
                 <div className="flex items-center justify-center gap-20">
-                    <div className="text-4xl font-normal text-neutral-600 dark:text-neutral-400">
+                    <div className="text-4xl font-normal text-neutral-400">
                         The
                         <FlipWords words={words} /> <br />
                         image optimizer on the web{" "}
@@ -18,7 +18,7 @@ function Home() {
                         <Emoji name="rocket" width={40} style={{ display: "inline" }} />
                         </EmojiProvider>
                     </div>
-                    <HeroCard />
+                    <HeroCard/>
                 </div>
                 <div className="w-full max-w-4xl mx-auto min-h-96 rounded-lg mb-20">
                     <div className="flex flex-col justify-center text-center gap-4">

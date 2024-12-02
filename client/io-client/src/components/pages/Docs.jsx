@@ -19,7 +19,8 @@ function Docs() {
                             <div className="text-2xl font-semibold">4. Click on optimize</div>
                             <div className="text-lg">Wait a few seconds for optimizing, compressing, and converting the image</div>
                             <div className="text-2xl font-semibold">5. Download</div>
-                            <div className="text-lg">Click the download button to get your optimized image</div>
+                            <div className="text-lg">You will see your image on the screen already optimized, 
+                                <br></br>you will simply have to right click on it and download it.</div>
                             <div className="text-2xl font-semibold">6. Done!</div>
                             <div className="text-lg flex gap-2 items-center">
                                 Thanks for using ImgLite

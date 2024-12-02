@@ -10,3 +10,9 @@
   background: radial-gradient(at center bottom, #010E1B, #2D3F52);
   color: white;
 }
+
+/* @media (min-width: 1024px) { 
+  #heroCard { 
+    display: none; 
+  } 
+} */

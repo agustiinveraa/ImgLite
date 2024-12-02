@@ -4,6 +4,8 @@ import sharp from 'sharp';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import axios from 'axios';
+import cors from 'cors';
 
 // TODO: Optimizar codigo
 
@@ -12,6 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+app.use(cors());
 const upload = multer({ dest: 'uploads/' }); // Carpeta temporal para subir imágenes
 
 // Crear el directorio "optimized" si no existe
@@ -28,14 +31,10 @@ app.post('/optimize', upload.single('image'), async (req, res) => {
     const outputPath = path.join(optimizedDir, `${req.file.originalname}.${format}`);
 
     try {
-        //console.log('Ruta de la imagen optimizada:', outputPath); 
 
-        // Optimizar la imagen
         await sharp(filePath)
-            .toFormat(format, { quality: parseInt(quality) }) // Calidad (0-100)
+            .toFormat(format, { quality: parseInt(quality) })
             .toFile(outputPath);
-
-        //console.log('Imagen optimizada guardada en:', outputPath); 
 
         // Leer el archivo optimizado y enviarlo como respuesta
         const optimizedImage = fs.readFileSync(outputPath);
@@ -44,11 +43,25 @@ app.post('/optimize', upload.single('image'), async (req, res) => {
         // fs.unlinkSync(filePath);
         // fs.unlinkSync(outputPath);
 
+        
         res.set('Content-Type', `image/${format}`);
         res.send(optimizedImage);
     } catch (error) {
         console.error('Error optimizando imagen:', error);
         res.status(500).send('Error al procesar la imagen.');
+    }
+});
+
+app.get('/optimized/:filename', (req, res) => {
+    const { filename } = req.params;
+    const filePath = path.join(optimizedDir, filename);
+
+    if (fs.existsSync(filePath)) {
+        res
+            .set('Content-Type', `image/${path.extname(filename).slice(1)}`)
+            .sendFile(filePath);
+    } else {
+        res.status(404).send('Imagen no encontrada');
     }
 });
 
