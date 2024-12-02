@@ -22,7 +22,7 @@ function Form() {
 
             //console.log(`http://localhost:3001/optimized/${file.name}.${format}`)
             const response = await axios.post(
-                'http://localhost:3001/optimize', 
+                'https://img-lite.vercel.app/optimize', 
                 formData, 
                 {
                     headers: {
@@ -37,7 +37,7 @@ function Form() {
                 return console.log("error");
             }
 
-            axios.get(`http://localhost:3001/optimized/${file.name}.${format}`)
+            axios.get(`https://img-lite.vercel.app/optimized/${file.name}.${format}`)
                 .then(response => {
                     setOptimized(true);
                 })
@@ -91,7 +91,7 @@ function Form() {
                         <div className="text-lg text-white">Download your image:</div>
                     </div>
                     <div className="flex justify-center pt-8">
-                        <img src={`http://localhost:3001/optimized/${file.name}.${format}`} alt="optimized" className="rounded-lg" width="300" />
+                        <img src={`https://img-lite.vercel.app/optimized/${file.name}.${format}`} alt="optimized" className="rounded-lg" width="300" />
                         
                     </div>
                 </>
