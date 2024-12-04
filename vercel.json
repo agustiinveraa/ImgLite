@@ -12,8 +12,12 @@
   ],
   "routes": [
     {
+      "src": "/api/optimize",
+      "dest": "/api/index.js"
+    },
+    {
       "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "dest": "/api/index.js"
     },
     {
       "src": "/(.*)",
