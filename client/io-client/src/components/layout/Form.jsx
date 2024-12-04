@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import SubmitButton from "../ui/SubmitButton";
-import alertify from "alertifyjs";
 import 'alertifyjs/build/css/alertify.css';
 
 function Form() {
@@ -9,11 +8,9 @@ function Form() {
     const [quality, setQuality] = useState(100);
     const [format, setFormat] = useState('webp');
     const [optimized, setOptimized] = useState(false);
-    const [fileSize, setFileSize] = useState(0);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //console.log(file, quality, format);
 
             let formData = new FormData();
             formData.append('image', file);
@@ -22,7 +19,7 @@ function Form() {
 
             //console.log(`http://localhost:3001/optimized/${file.name}.${format}`)
             const response = await axios.post(
-                'https://img-lite-backend.vercel.app/optimize', 
+                'http://localhost:3001/optimize', 
                 formData, 
                 {
                     headers: {
@@ -37,7 +34,7 @@ function Form() {
                 return console.log("error");
             }
 
-            axios.get(`https://img-lite-backend.vercel.app/optimized/${file.name}.${format}`)
+            axios.get(`http://localhost:3001/optimized/${file.name}.${format}`)
                 .then(response => {
                     setOptimized(true);
                 })
@@ -91,7 +88,7 @@ function Form() {
                         <div className="text-lg text-white">Download your image:</div>
                     </div>
                     <div className="flex justify-center pt-8">
-                        <img src={`https://img-lite-backend.vercel.app/optimized/${file.name}.${format}`} alt="optimized" className="rounded-lg" width="300" />
+                        <img src={`http://localhost:3001/optimized/${file.name}.${format}`} alt="optimized" className="rounded-lg" width="300" />
                         
                     </div>
                 </>
