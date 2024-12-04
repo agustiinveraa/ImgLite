@@ -7,7 +7,7 @@ import cors from 'cors';
 import os from 'os'; // Para directorios temporales
 
 const app = express();
-app.use(cors());
+app.use(cors({origin: 'https://img-lite.vercel.app/' }));
 app.use(express.json());
 
 const upload = multer({ dest: path.join(os.tmpdir(), 'uploads') });
@@ -18,7 +18,7 @@ if (!fs.existsSync(optimizedDir)) {
     fs.mkdirSync(optimizedDir);
 }
 
-app.post('/optimize', upload.array('image', 10), async (req, res) => {
+app.post('/api/optimize', upload.array('image', 10), async (req, res) => {
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('Debes subir al menos 1 imagen.');
     }
@@ -58,7 +58,7 @@ app.post('/optimize', upload.array('image', 10), async (req, res) => {
     }
 });
 
-app.get('/optimized/:filename', (req, res) => {
+app.get('/api/optimized/:filename', (req, res) => {
     const { filename } = req.params;
     const filePath = path.join(optimizedDir, filename);
 
