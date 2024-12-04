@@ -17,24 +17,22 @@ function Form() {
             formData.append('quality', quality);
             formData.append('format', format);
 
-            //console.log(`http://localhost:3001/optimized/${file.name}.${format}`)
             const response = await axios.post(
-                'http://localhost:3001/optimize', 
+                'https://img-lite.vercel.app/api/optimize',  // Cambiar aquí a producción
                 formData, 
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
-
                 }
-            );
+            );            
 
             if (response.status !== 200) {
                 setOptimized(false);
                 return console.log("error");
             }
 
-            axios.get(`http://localhost:3001/optimized/${file.name}.${format}`)
+            axios.get(`https://img-lite.vercel.app/api/optimized/${file.name}.${format}`)  // Cambiar aquí a producción
                 .then(response => {
                     setOptimized(true);
                 })
@@ -46,7 +44,7 @@ function Form() {
 
     return (
         <>
-            {!optimized ?
+            {!optimized ? 
             <form onSubmit={handleSubmit}>
                 <div className="w-full max-w-4xl mx-auto min-h-96 border border-dashed bg-gray-900 border-gray-700 rounded-lg p-10">
                         <div className="flex justify-center gap-4">
@@ -71,7 +69,6 @@ function Form() {
                                     <option value="avif">AVIF</option>
                                 </select>
                             </div>
-                            
                         </div>
                         <div className="flex justify-center w-full max-w-xs items-center gap-1.5 mx-auto pt-5">
                                 <input type="file" onChange={(e) => setFile(e.target.files[0])} className="flex h-10 w-full rounded-md border border-input bg-gray-800 px-3 py-2 text-sm text-gray-400 file:border-0 file:bg-transparent file:text-gray-400 file:text-sm file:font-medium" />
@@ -88,8 +85,7 @@ function Form() {
                         <div className="text-lg text-white">Download your image:</div>
                     </div>
                     <div className="flex justify-center pt-8">
-                        <img src={`http://localhost:3001/optimized/${file.name}.${format}`} alt="optimized" className="rounded-lg" width="300" />
-                        
+                        <img src={`https://img-lite.vercel.app/api/optimized/${file.name}.${format}`} alt="optimized" className="rounded-lg" width="300" />
                     </div>
                 </>
             )}
