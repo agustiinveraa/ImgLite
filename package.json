@@ -10,6 +10,7 @@
     "build:frontend": "cd client && npm run build"
   },
   "dependencies": {
+    "cloudinary": "^2.5.1",
     "concurrently": "^7.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
