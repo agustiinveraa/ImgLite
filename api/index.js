@@ -68,7 +68,7 @@ app.get('/api/optimized/:filename', (req, res) => {
     const { filename } = req.params;
 
     // Asume que el archivo está en la carpeta "optimized_images" de Cloudinary
-    const cloudinaryUrl = `https://res.cloudinary.com/tu-cloud-name/image/upload/optimized_images/${filename}`;
+    const cloudinaryUrl = `https://console.cloudinary.com/pm/c-a9def459a008f17d8ca2db974c00c7/media-explorer/optimized_images/${filename}`;
 
     res.redirect(cloudinaryUrl); // Redirige al usuario a la URL de Cloudinary
 });
