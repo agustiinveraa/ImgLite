@@ -1,7 +1,7 @@
 import { EmojiProvider, Emoji } from "react-apple-emojis"
 import emojiData from "react-apple-emojis/src/data.json"
 
-function SubmitButton() {
+function SubmitButton({ text }) {
     return (
         <div className="relative group">
         <div
@@ -18,7 +18,7 @@ function SubmitButton() {
                 name="text"
                 className="input font-semibold text-lg h-full opacity-90 w-full px-16 py-3 rounded-xl bg-black"
             >
-                Optimize <EmojiProvider data={emojiData}><Emoji name="sparkles" width={25} style={{ display: "inline" }} /></EmojiProvider>
+                {text} <EmojiProvider data={emojiData}><Emoji name="sparkles" width={25} style={{ display: "inline" }} /></EmojiProvider>
             </button>
             </div>
             <div
