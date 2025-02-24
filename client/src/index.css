@@ -1,13 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background: #010E1B;
-  background: radial-gradient(at center bottom, #010E1B, #2D3F52);
+  background: #010e1b;
+  background: radial-gradient(at center bottom, #010e1b, #2d3f52);
   color: white;
 }
 
