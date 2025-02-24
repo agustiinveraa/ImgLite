@@ -92,3 +92,10 @@ A web application for image optimization that stands out for its speed and effic
 [![TailwindCSS](https://img.shields.io/badge/-TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 </div>
+
+![image](https://github.com/user-attachments/assets/49385a82-ef21-42f9-89d6-eedb9dc821c3)
+![image](https://github.com/user-attachments/assets/b1f4953c-bc9c-4b7c-a67d-2d15dca55512)
+![image](https://github.com/user-attachments/assets/11a8d6ad-e948-4c53-ab75-5742893f6727)
+
+
+
